@@ -5,14 +5,27 @@ let started = false;
 let h2 = document.querySelector('h2');
 let buttons = document.querySelectorAll('.box');
 let score = 0;
+let key = document.querySelector('button');
 
-document.addEventListener('keypress', function() {
+// document.addEventListener('keypress', function() {
+//     if (!started) {
+//         started = true;
+//         levelup();
+//     }
+
+//     // levelup();
+// });
+
+
+key.addEventListener('click', function() {
     if (!started) {
         started = true;
+        key.innerText = 'Stop Game'
+        key.classList.toggle('endgame');
         levelup();
+    } else {
+        reset();
     }
-
-    // levelup();
 });
 
 function levelup() {
@@ -34,13 +47,14 @@ function flashButton(btn) {
 }
 
 function userClick() {
-    if (!started) return;
     let btn = this;
     let color = btn.getAttribute("id")+"2";
     btn.classList.add(color);
     setTimeout(function() {
         btn.classList.remove(color);
     }, 500);
+
+    if (!started) return;
 
     user.push(indexOf(btn));
     check(user.length-1);
@@ -59,12 +73,14 @@ function check(idx) {
             setTimeout(levelup, 1000);
         }
     } else {
-        h2.innerText = `Game Over! Your total score is ${score}\nPress any key to start again`;
         reset();
     }
 }
 
 function reset() {
+    h2.innerText = `Game Over! Your total score is ${score}\nPress any key to start again`;
+    key.classList.toggle('endgame');
+    key.innerText = 'Start Game';
     level = 0;
     started = false;
     device = [];

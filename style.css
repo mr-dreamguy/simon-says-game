@@ -54,3 +54,28 @@ body {
     background-color: rgb(247, 33, 247);
     box-shadow: none;
 }
+
+button {
+    margin: 3em;
+    padding: .2em .5em;
+    background: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition-duration: .5s;
+    transition-timing-function: .5s ease-out;
+}
+
+button:hover {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.endgame {
+    border: 2px solid red;
+    color: red;
+}
+
+.endgame:hover {
+    background-color: red;
+    color: whitesmoke;
+}
